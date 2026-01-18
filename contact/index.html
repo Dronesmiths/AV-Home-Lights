@@ -98,7 +98,14 @@
     <!-- Contact Content -->
     <section class="features">
         <div class="container">
-            <div class="features-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="features-grid" style="grid-template-columns: 1fr 1fr; gap: 30px;">
+                <style>
+                    @media (max-width: 768px) {
+                        .features-grid {
+                            grid-template-columns: 1fr !important;
+                        }
+                    }
+                </style>
                 <!-- Contact Info -->
                 <div class="feature-card" style="text-align: left;">
                     <h2 style="margin-bottom: 20px;">Get a Quote</h2>
