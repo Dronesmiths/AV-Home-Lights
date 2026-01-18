@@ -88,15 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (range && after && divider && handle) {
             // Initialize
             update(range.value || 50);
-            
+
             // Desktop: input event
             range.addEventListener('input', e => update(e.target.value));
-            
+
             // Mobile: touch events for better responsiveness
             range.addEventListener('touchstart', e => {
                 e.preventDefault();
             }, { passive: false });
-            
+
             range.addEventListener('touchmove', e => {
                 e.preventDefault();
                 const touch = e.touches[0];
@@ -105,6 +105,150 @@ document.addEventListener('DOMContentLoaded', () => {
                 range.value = percent;
                 update(percent);
             }, { passive: false });
+        });
+
+    // Security & Lighting Popup Modal (15 seconds after page load)
+    setTimeout(() => {
+        // Check if user has already seen the popup in this session
+        if (sessionStorage.getItem('av-popup-shown')) {
+            return;
         }
-    });
+
+        // Create modal HTML
+        const modalHTML = `
+            <div id="av-security-modal" style="
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                animation: fadeIn 0.3s ease-in-out;
+            ">
+                <div style="
+                    background: white;
+                    border-radius: 12px;
+                    max-width: 500px;
+                    width: 90%;
+                    padding: 40px 30px;
+                    position: relative;
+                    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+                    text-align: center;
+                ">
+                    <button id="av-modal-close" style="
+                        position: absolute;
+                        top: 15px;
+                        right: 15px;
+                        background: none;
+                        border: none;
+                        font-size: 28px;
+                        cursor: pointer;
+                        color: #666;
+                        line-height: 1;
+                        padding: 0;
+                        width: 30px;
+                        height: 30px;
+                    ">&times;</button>
+                    
+                    <img src="/images/andrew-manager.webp" alt="Andrew - AV Home Lighting" style="
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        margin: 0 auto 20px;
+                        display: block;
+                        border: 4px solid #D4AF37;
+                    ">
+                    
+                    <h3 style="
+                        font-size: 1.8rem;
+                        color: #1a1a1a;
+                        margin-bottom: 15px;
+                        font-weight: 700;
+                    ">Need Security & Lighting?</h3>
+                    
+                    <p style="
+                        font-size: 1.1rem;
+                        color: #666;
+                        margin-bottom: 25px;
+                        line-height: 1.6;
+                    ">Hi, I'm Andrew! We specialize in professional LED security lighting and camera systems for Antelope Valley homes. Get a free consultation today!</p>
+                    
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <a href="tel:6614862640" style="
+                            background: linear-gradient(135deg, #D4AF37 0%, #F5E6D3 100%);
+                            color: #1a1a1a;
+                            padding: 15px 30px;
+                            border-radius: 8px;
+                            text-decoration: none;
+                            font-weight: 700;
+                            font-size: 1.1rem;
+                            display: inline-block;
+                            transition: transform 0.2s;
+                        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            📞 Call (661) 486-2640
+                        </a>
+                        <a href="/contact/" style="
+                            background: #1a1a1a;
+                            color: white;
+                            padding: 15px 30px;
+                            border-radius: 8px;
+                            text-decoration: none;
+                            font-weight: 700;
+                            font-size: 1.1rem;
+                            display: inline-block;
+                            transition: transform 0.2s;
+                        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            Get Free Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Add fade-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Insert modal into page
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+        // Mark as shown in session
+        sessionStorage.setItem('av-popup-shown', 'true');
+
+        // Close button functionality
+        const modal = document.getElementById('av-security-modal');
+        const closeBtn = document.getElementById('av-modal-close');
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.animation = 'fadeOut 0.3s ease-in-out';
+            setTimeout(() => modal.remove(), 300);
+        });
+
+        // Close on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.animation = 'fadeOut 0.3s ease-in-out';
+                setTimeout(() => modal.remove(), 300);
+            }
+        });
+
+        // Add fade-out animation
+        style.textContent += `
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+    }, 15000); // 15 seconds
 });
