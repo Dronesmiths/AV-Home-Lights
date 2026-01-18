@@ -114,18 +114,17 @@ header .container {
 
 .logo {
     font-family: var(--font-heading);
-    font-size: 24px;
-    font-weight: 800;
+    font-size: 28px;
+    font-weight: 900;
     color: var(--primary-dark);
     z-index: 1001;
-    /* Border effect for better visibility */
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-decoration: none;
+    letter-spacing: -0.5px;
 }
 
 .logo span {
     color: var(--accent-gold);
-    /* Ensure the border effect applies here too, inheriting or reinforcing */
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-weight: 900;
 }
 
 /* Desktop Navigation */
