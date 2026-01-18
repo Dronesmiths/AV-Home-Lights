@@ -243,7 +243,7 @@ nav a.active {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.7)), url('../images/hero-home.png');
+    background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.7)), url('../images/hero-home-lighting.png');
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -253,8 +253,7 @@ nav a.active {
 
 .page-hero {
     padding: 120px 0 80px;
-    background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('../images/hero-home.png');
-    /* Mowing image as BG */
+    background: linear-gradient(rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.9)), url('../images/hero-home-lighting.png');
     background-size: cover;
     background-position: center;
 }
