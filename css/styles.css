@@ -2092,7 +2092,7 @@ footer {
 .av-explore-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 51, 26, 0.95) 10%, rgba(0, 77, 41, 0.4) 50%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(26, 26, 26, 0.6) 50%, transparent 100%);
     padding: 30px;
     display: flex;
     flex-direction: column;
