@@ -1393,49 +1393,6 @@ footer {
 .aw-footer-brand {
     flex: 1;
     min-width: 250px;
-    position: relative;
-}
-
-.aw-footer-brand::before,
-.aw-footer-brand::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 10px;
-    height: 10px;
-    background: radial-gradient(circle, #D4AF37 0%, #F5E6D3 40%, transparent 70%);
-    border-radius: 50%;
-    animation: footerSpotlightGlow 2s ease-in-out infinite;
-}
-
-.aw-footer-brand::before {
-    left: 0;
-    box-shadow:
-        0 0 15px rgba(212, 175, 55, 0.8),
-        0 -30px 60px rgba(212, 175, 55, 0.3),
-        0 -60px 90px rgba(212, 175, 55, 0.1);
-}
-
-.aw-footer-brand::after {
-    left: 180px;
-    box-shadow:
-        0 0 15px rgba(212, 175, 55, 0.8),
-        0 -30px 60px rgba(212, 175, 55, 0.3),
-        0 -60px 90px rgba(212, 175, 55, 0.1);
-}
-
-@keyframes footerSpotlightGlow {
-
-    0%,
-    100% {
-        opacity: 0.8;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.15);
-    }
 }
 
 .aw-footer-brand h3 {
