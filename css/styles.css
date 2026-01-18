@@ -1264,6 +1264,33 @@ footer {
     color: var(--white);
     padding: 60px 0 0;
     font-size: 0.95rem;
+    position: relative;
+    border-top: 4px solid transparent;
+    background-image:
+        linear-gradient(var(--primary-dark), var(--primary-dark)),
+        linear-gradient(90deg,
+            #F5E6D3 0%,
+            #D4AF37 25%,
+            #F5E6D3 50%,
+            #D4AF37 75%,
+            #F5E6D3 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    animation: ledGlow 3s linear infinite;
+}
+
+@keyframes ledGlow {
+    0% {
+        filter: brightness(1) drop-shadow(0 -2px 8px rgba(212, 175, 55, 0.6));
+    }
+
+    50% {
+        filter: brightness(1.2) drop-shadow(0 -2px 12px rgba(212, 175, 55, 0.8));
+    }
+
+    100% {
+        filter: brightness(1) drop-shadow(0 -2px 8px rgba(212, 175, 55, 0.6));
+    }
 }
 
 .aw-footer-inner {
