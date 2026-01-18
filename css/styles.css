@@ -208,7 +208,7 @@ nav a.active {
     }
 
     /* Mobile Navigation Menu */
-    nav {
+    .nav-menu {
         position: absolute;
         top: 100%;
         left: 0;
@@ -222,18 +222,18 @@ nav a.active {
         z-index: 999;
     }
 
-    nav.active {
+    .nav-menu.active {
         transform: translateY(0);
         /* Slide down */
     }
 
-    nav ul {
+    .nav-menu ul {
         flex-direction: column;
         gap: 20px;
         text-align: center;
     }
 
-    nav a {
+    .nav-menu a {
         display: block;
         font-size: 1.1rem;
         padding: 10px;
