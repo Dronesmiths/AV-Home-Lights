@@ -1320,7 +1320,7 @@ footer {
 
 /* New Section: Stats Bar */
 .stats-bar {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, #00331a 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a1628 100%);
     padding: 70px 0;
     color: var(--white);
 }
