@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // Comparison Slider Logic (New Range Input Method)
+    // Comparison Slider Logic (Enhanced with Mobile Support)
     document.querySelectorAll('.av-yard-ba-slider').forEach(slider => {
         const range = slider.querySelector('.av-yard-range');
         const after = slider.querySelector('.av-yard-after');
@@ -75,14 +75,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const handle = slider.querySelector('.av-yard-handle');
 
         function update(val) {
-            after.style.clipPath = `inset(0 0 0 ${val}%)`;
-            divider.style.left = val + '%';
-            handle.style.left = val + '%';
+            try {
+                const clampedVal = Math.max(0, Math.min(100, val));
+                if (after) after.style.clipPath = `inset(0 0 0 ${clampedVal}%)`;
+                if (divider) divider.style.left = clampedVal + '%';
+                if (handle) handle.style.left = clampedVal + '%';
+            } catch (e) {
+                console.error('Slider update error:', e);
+            }
         }
 
         if (range && after && divider && handle) {
-            update(range.value);
+            // Initialize
+            update(range.value || 50);
+            
+            // Desktop: input event
             range.addEventListener('input', e => update(e.target.value));
+            
+            // Mobile: touch events for better responsiveness
+            range.addEventListener('touchstart', e => {
+                e.preventDefault();
+            }, { passive: false });
+            
+            range.addEventListener('touchmove', e => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const rect = range.getBoundingClientRect();
+                const percent = Math.max(0, Math.min(100, ((touch.clientX - rect.left) / rect.width) * 100));
+                range.value = percent;
+                update(percent);
+            }, { passive: false });
         }
     });
 });
