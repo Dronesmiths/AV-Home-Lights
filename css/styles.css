@@ -2125,15 +2125,21 @@ footer {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--accent-gold);
+    background: linear-gradient(135deg, #F5E6D3 0%, #D4AF37 50%, #F5E6D3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     display: flex;
     align-items: center;
     gap: 8px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
 }
 
 .av-explore-link::after {
     content: "→";
     transition: transform 0.3s ease;
+    -webkit-text-fill-color: #F5E6D3;
 }
 
 .av-explore-card:hover .av-explore-link::after {
